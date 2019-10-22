@@ -6,7 +6,7 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 08:15:19 by aguiller          #+#    #+#             */
-/*   Updated: 2019/10/22 14:51:49 by alexzudin        ###   ########.fr       */
+/*   Updated: 2019/10/22 15:14:31 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char **reading(int fd)
 	line = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
-		massivex
+		massive
 
 	}
 
