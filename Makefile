@@ -6,7 +6,7 @@
 #    By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 22:26:44 by aguiller          #+#    #+#              #
-#    Updated: 2019/10/22 14:38:50 by alexzudin        ###   ########.fr        #
+#    Updated: 2019/10/23 06:03:02 by alexzudin        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,8 +84,6 @@ OBJ_LIB = $(SRC_LIB:%.c=%.o)
 
 $(NAME_LIB): $(OBJ_LIB)
 	ar rcs $(NAME_LIB) $(OBJ_LIB)
-%.o:%.c
-	gcc -Wall -Wextra -Werror -c $< -o $@
 
 cleanlib:
 	@/bin/rm -f $(OBJ_LIB)
@@ -95,8 +93,11 @@ fcleanlib: cleanlib
 
 relib: fcleanlib $(NAME_LIB)
 
-$(NAME): $(OBJ) $(NAME_LIB)
+$(NAME): $(NAME_LIB) $(OBJ) 
 	gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) libft.a
+
+%.o:%.c
+	gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean: cleanlib
 	@/bin/rm -f $(OBJ)

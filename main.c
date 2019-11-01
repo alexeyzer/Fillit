@@ -6,13 +6,13 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 08:15:19 by aguiller          #+#    #+#             */
-/*   Updated: 2019/10/22 15:14:31 by alexzudin        ###   ########.fr       */
+/*   Updated: 2019/10/24 20:47:49 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char **reading(int fd)
+char **rd(int fd)
 {
 	char	**massive;
 	char	*line;
@@ -21,19 +21,17 @@ char **reading(int fd)
 	line = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
-		massive
 
 	}
 
+	return (0);
+
 }
 
-
-int main(int argc, char **argv)
+int checkarg(int argc, char **argv)
 {
-	int	fd;
-	char	**massive;
+	int fd;
 
-	massive = NULL;
 	if (argc <= 1)
 	{
 		ft_putendl("You should give as parametr file with tetriminos");
@@ -47,7 +45,22 @@ int main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd <=0 )
 	{
-		ft_putendl("Could not to open file");
+		ft_putendl("Could not to open the file");
 		return (0);
 	}
+	return (fd);
+}
+
+
+int main(int argc, char **argv)
+{
+	int	fd;
+	char	**massive;
+
+	massive = NULL;
+	if ((fd = checkarg(argc,argv)) == 0)
+		return (0);
+	
+
+	return (0);
 }
