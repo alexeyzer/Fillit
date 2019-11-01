@@ -6,18 +6,13 @@
 #    By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 22:26:44 by aguiller          #+#    #+#              #
-#    Updated: 2019/10/23 06:03:02 by alexzudin        ###   ########.fr        #
+#    Updated: 2019/11/01 19:58:19 by alexzudin        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main.c get_next_line.c
 
 NAME = fillit
-
-
-OBJ = $(SRC:%.c=%.o)
-
-all: $(NAME) 
 
 SRC_LIB = libft/ft_atoi.c \
 		libft/ft_bzero.c\
@@ -77,6 +72,11 @@ SRC_LIB = libft/ft_atoi.c \
 		libft/ft_strtrim.c\
 		libft/ft_tolower.c\
 		libft/ft_toupper.c
+
+
+OBJ = $(SRC:%.c=%.o)
+
+all: $(NAME) 
 
 NAME_LIB = libft.a
 

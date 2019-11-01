@@ -6,13 +6,11 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 08:15:19 by aguiller          #+#    #+#             */
-/*   Updated: 2019/11/01 19:50:36 by alexzudin        ###   ########.fr       */
+/*   Updated: 2019/11/01 19:59:23 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
-
 
 int checkline(char *line, int *strok, int *reshotki)
 {
