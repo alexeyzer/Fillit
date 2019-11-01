@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "fillit.h"
 
 int	makeline(char **line, char **longm, int fd, int schitali)
 {
