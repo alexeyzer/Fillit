@@ -6,11 +6,12 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 08:15:19 by aguiller          #+#    #+#             */
-/*   Updated: 2019/11/02 20:59:39 by alexzudin        ###   ########.fr       */
+/*   Updated: 2019/11/12 14:57:58 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 int checkarg(int argc, char **argv)
 {
@@ -39,20 +40,28 @@ int checkarg(int argc, char **argv)
 int main(int argc, char **argv)
 {
 	int	fd;
+	int count;
 	char	**massive;
 
 	massive = NULL;
+	count = 0;
 	if ((fd = checkarg(argc,argv)) == 0)
 		return (0);
-	if(first_check(fd) == 0)
+	if(first_check(fd, &count) == 0)
 	{
 		ft_putendl("error");
 		return (0);
 	}
+	printf("%d", count);
 	if (close(fd) < 0)
 		return (0);
 	if ((fd = checkarg(argc,argv)) == 0)
 		return (0);
+	if (second_check(fd, count) == 0)
+	{
+		ft_putendl("error");
+		return (0);
+	}
 
 	return (0);
 }

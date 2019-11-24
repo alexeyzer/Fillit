@@ -6,13 +6,13 @@
 /*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 20:55:56 by alexzudin         #+#    #+#             */
-/*   Updated: 2019/11/02 21:04:27 by alexzudin        ###   ########.fr       */
+/*   Updated: 2019/11/12 14:53:08 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int checkline(char *line, int *strok, int *reshotki)
+int checkline(char *line, int *strok, int *reshotki, int *count)
 {
 	if (line[0])
 		(*strok)++;
@@ -24,6 +24,7 @@ int checkline(char *line, int *strok, int *reshotki)
 		if (*reshotki != 4)
 			return (0);
 		*reshotki = 0;
+		(*count)++;
 	}
 	return (1);
 }
@@ -35,16 +36,19 @@ int lastcheck(int i, char **line)
 	return (1);
 }
 
-int absolutlylastcheck(int strok, int reshotki)
+int absolutlylastcheck(int strok, int reshotki, int *count)
 {
 	if (strok != 4)
 		return (0);
 	if (reshotki != 4)
-			return (0);
+		return (0);
+	(*count)++;
+	if (*count > 26 || *count == 0)
+		return (0);
 	return (1);
 }
 
-int first_check(int fd)
+int first_check(int fd, int *count)
 {
 	int		reshotki;
 	char	*line;
@@ -57,7 +61,7 @@ int first_check(int fd)
 	while (get_next_line(fd, &line) > 0)
 	{
 		i = 0;
-		if (checkline(line, &strok, &reshotki) == 0)
+		if (checkline(line, &strok, &reshotki, count) == 0)
 			return (0);
 		while (line[i])
 		{
@@ -70,5 +74,5 @@ int first_check(int fd)
 		if (lastcheck(i, &line) == 0)
 			return (0);
 	}
-	return (absolutlylastcheck(strok, reshotki));
+	return (absolutlylastcheck(strok, reshotki, count));
 }

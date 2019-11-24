@@ -6,11 +6,11 @@
 #    By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 22:26:44 by aguiller          #+#    #+#              #
-#    Updated: 2019/11/02 20:57:00 by alexzudin        ###   ########.fr        #
+#    Updated: 2019/11/12 14:38:10 by alexzudin        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c get_next_line.c first_check.c
+SRC = main.c get_next_line.c first_check.c second_check.c
 
 NAME = fillit
 
