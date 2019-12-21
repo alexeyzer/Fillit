@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 08:19:05 by alexzudin         #+#    #+#             */
-/*   Updated: 2019/11/13 13:00:17 by alexzudin        ###   ########.fr       */
+/*   Updated: 2019/12/21 18:07:00 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#ifndef FILLIT_H
 
-# define GET_NEXT_LINE_H
+# define FILLIT_H
 
 # include <sys/types.h>
 # include <sys/uio.h>
@@ -20,16 +20,68 @@
 # include "libft/libft.h"
 # define BUFF_SIZE 8
 
-int		get_next_line(const int fd, char **line);
-int		first_check(int fd, int *c);
-int 	second_check(int fd, int count);
+int							get_next_line(const int fd, char **line);
+int							first_check(int fd, int *c);
+int							second_check(int fd, int count);
 
-typedef struct 				s_tetraminos
+typedef struct				s_tetraminos
 {
-	void 			*data;
-	char			c;
-	struct s_tetraminos 	*next;
+	void					*data;
+	char					c;
+	struct s_tetraminos		*next;
 
 }							t_tetra;
+struct						s_koord
+{
+	int						x;
+	int						y;
+	int						nbr;
+};
+t_tetra						*tetra_add(t_tetra *alst, t_tetra *new);
+t_tetra						*tetra_new(void const *content,
+	char a, size_t content_size);
+void						tomass(int fd, int **mass);
+int							read_to_mass(int fd, int count, t_tetra **head);
+int							make_minimal(t_tetra **head);
+void						find_minimal(int **mass);
+int							diagonal_check(t_tetra **head);
+char						**create_square(int n);
+void						print_square(int n, char **square);
+int							find_min(t_tetra *elem);
+void						solver(t_tetra **elem);
+int		check_clash(char **square, t_tetra **tmp, int x, int y, int n);
+void	push_figure(char ***square, const int *elem, char c, int x, int y);
+void	new_square(char ***square, int n);
+int	req_function(char ***square, t_tetra **tmp,int x, int y, t_tetra **head);
+int							find_min_square(char ***square, t_tetra **elem);
+int specialagent(char ***square, t_tetra **tmp,int x, int y, t_tetra **head);
+// int							find_max_y(char **square, int x, int nbr);
+// struct s_koord				*push_x0_y_change(struct s_koord *my_coord);
+// struct s_koord				*push_x_change_y(char **square,
+// 	struct s_koord *my_coord);
+// struct s_koord				*push_x0_change_y(char **square,
+// 	struct s_koord *my_coord);
+int koord_changer(int *x, int *y, int n);
+void			free_letter(char ***square, char c, int n);
+int size(char **square);
+# define I_PIECE (int [8]){0,0,0,1,0,2,0,3}
+# define IH_PIECE (int [8]){0,0,1,0,2,0,3,0}
+# define O_PIECE (int [8]){0,0,1,0,0,1,1,1}
+# define L_PIECE (int [8]){0,0,0,1,0,2,1,2}
+# define LR_PIECE (int [8]){0,0,1,0,2,0,0,1}
+# define LD_PIECE (int [8]){0,0,1,0,1,1,1,2}
+# define LL_PIECE (int [8]){2,0,0,1,1,1,2,1}
+# define J_PIECE (int [8]){1,0,1,1,0,2,1,2}
+# define JR_PIECE (int [8]){0,0,0,1,1,1,2,1}
+# define JD_PIECE (int [8]){0,0,1,0,0,1,0,2}
+# define JL_PIECE (int [8]){0,0,1,0,2,0,2,1}
+# define T_PIECE (int [8]){1,0,0,1,1,1,2,1}
+# define TR_PIECE (int [8]){0,0,0,1,1,1,0,2}
+# define TD_PIECE (int [8]){0,0,1,0,2,0,1,1}
+# define TL_PIECE (int [8]){1,0,0,1,1,1,1,2}
+# define S_PIECE (int [8]){1,0,2,0,0,1,1,1}
+# define SR_PIECE (int [8]){0,0,0,1,1,1,1,2}
+# define Z_PIECE (int [8]){0,0,1,0,1,1,2,1}
+# define ZR_PIECE (int [8]){1,0,0,1,1,1,0,2}
 
 #endif

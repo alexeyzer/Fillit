@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+         #
+#    By: ehell <ehell@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 22:26:44 by aguiller          #+#    #+#              #
-#    Updated: 2019/11/12 14:38:10 by alexzudin        ###   ########.fr        #
+#    Updated: 2019/12/14 18:57:22 by ehell            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c get_next_line.c first_check.c second_check.c
+SRC = main.c get_next_line.c first_check.c second_check.c tetra_func.c\
+third_check.c solver.c find_min_square.c koord_func.c
 
 NAME = fillit
 
@@ -83,7 +84,7 @@ NAME_LIB = libft.a
 OBJ_LIB = $(SRC_LIB:%.c=%.o)
 
 $(NAME_LIB): $(OBJ_LIB)
-	ar rcs $(NAME_LIB) $(OBJ_LIB)
+	@ar rcs $(NAME_LIB) $(OBJ_LIB)
 
 cleanlib:
 	@/bin/rm -f $(OBJ_LIB)
@@ -94,10 +95,10 @@ fcleanlib: cleanlib
 relib: fcleanlib $(NAME_LIB)
 
 $(NAME): $(NAME_LIB) $(OBJ) 
-	gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) libft.a
+	@gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) libft.a
 
 %.o:%.c
-	gcc -Wall -Wextra -Werror -c $< -o $@
+	@gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean: cleanlib
 	@/bin/rm -f $(OBJ)
