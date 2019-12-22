@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_min_square.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 18:49:41 by ehell             #+#    #+#             */
-/*   Updated: 2019/12/21 18:33:47 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/22 10:36:55 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	new_square(char ***square, int n)
 		free((*square)[i]);
 		i++;
 	}
-	free(*square);
+	*square = NULL;
 	*square = create_square(n);
 }
 
@@ -82,27 +82,23 @@ int size(char **square)
 int	req_function(char ***square, t_tetra **tmp,int x, int y, t_tetra **head)
 {
 	int	check;
-	
 	check = check_clash(*square, tmp, x, y, size(*square));
-	if ((check == -1 || check == -2) && (*tmp)->c == 'A')
-	{
-		new_square(square, size(*square) + 1);
-		return (req_function(square, tmp, x, y , head));
-	}
+
 	if (check == 1)
 	{
-		write(1,"b",1);
 		push_figure(square, (int *)(*tmp)->data, (*tmp)->c, x, y);
-		while (specialagent(square, tmp, x, y, head) == 0)
+		if (specialagent(square, tmp, x, y, head) == 0)
 		{
-			printf("c");
 			free_letter(square, (*tmp)->c, size(*square));
 			if (koord_changer(&x, &y, size(*square)) == 1)
-				push_figure(square, (int *)(*tmp)->data, (*tmp)->c, x, y);
-		    else if((*tmp)->c == 'A')
+				return (req_function(square, tmp , x  , y, head));
+		    if((*tmp)->c == 'A')
 			{
 				new_square(square, size(*square) + 1);
-				return (req_function(square, head, x  , y, head));
+				x = 0;
+				y = 0;
+				*tmp = *head;
+				return (req_function(square, tmp, x  , y, head));
 			}
 			else
 				return (0);
@@ -110,27 +106,52 @@ int	req_function(char ***square, t_tetra **tmp,int x, int y, t_tetra **head)
 		return (1);
 	}
 	if (check == 0 || check == -2 || check == -1)
-		return (specialagent(square, tmp,  x, y, head));
+		return (newguy(square, tmp,  x, y, head));
 	return (1);
 }
-
-
-int specialagent(char ***square, t_tetra **tmp,int x, int y, t_tetra **head)
+int newguy(char ***square, t_tetra **tmp,int x, int y, t_tetra **head)
 {
 	int a;
 	int n;
 	
 	n = size(*square);
+
 	a = koord_changer(&x, &y, n);
-	write(1,"\nkkord stat=",12);
-	ft_putnbr(a);
-	write(1,"\n",1);
-	if ((*tmp)->next && a == 1)
-		return (req_function(square, &(*tmp)->next, x, y , head));
-	if (a == 0)
+	// ft_putnbr(x);
+	// ft_putnbr(y);
+	// ft_putnbr(n);
+	// write(1,"dr",2);
+	if  (a == 1)
+	{
+		return (req_function(square, tmp, x, y , head));
+	}
+	else
+	{
+		if((*tmp)->c == 'A')
+		{
+			new_square(square, size(*square) + 1);
+			x = 0;
+			y = 0;
+			*tmp = *head;
+			return (req_function(square, tmp, x, y , head));
+		}
 		return (0);
-	write(1,"\nr",2);
-	return (0);
+	}	
+}
+
+
+int specialagent(char ***square, t_tetra **tmp,int x, int y, t_tetra **head)
+{
+	int n;
+	
+	n = size(*square);
+	if ((*tmp)->next)
+	{
+		x = 0;
+		y = 0;
+		return (req_function(square, &(*tmp)->next, x, y , head));
+	}
+	return (1);
 }
 
 int		find_min_square(char ***square, t_tetra **elem)

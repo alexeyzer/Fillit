@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 08:19:05 by alexzudin         #+#    #+#             */
-/*   Updated: 2019/12/21 18:07:00 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/21 23:27:49 by alexzudin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	new_square(char ***square, int n);
 int	req_function(char ***square, t_tetra **tmp,int x, int y, t_tetra **head);
 int							find_min_square(char ***square, t_tetra **elem);
 int specialagent(char ***square, t_tetra **tmp,int x, int y, t_tetra **head);
+int newguy(char ***square, t_tetra **tmp,int x, int y, t_tetra **head);
 // int							find_max_y(char **square, int x, int nbr);
 // struct s_koord				*push_x0_y_change(struct s_koord *my_coord);
 // struct s_koord				*push_x_change_y(char **square,
