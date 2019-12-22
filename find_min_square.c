@@ -3,36 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   find_min_square.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 18:49:41 by ehell             #+#    #+#             */
-/*   Updated: 2019/12/22 10:36:55 by alexzudin        ###   ########.fr       */
+/*   Updated: 2019/12/22 16:58:48 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "stdio.h"
 
-int		check_clash(char **square, t_tetra **tmp, int x, int y, int n)
+int		check_clash(char **square, t_tetra **tmp, int x, int y)
 {
 	int	i;
+	int n;
 	int	*elem;
+
+	
 	elem = (int*)((*tmp)->data);
-	/*
-	 * 0 - столкновение,
-	 * 1 - все верно,
-	 * -1 - не проходит по высоте
-	 * -2 - не проходит по ширине
-	 * n - высота переданного прямоугольника
-	 */
+	n = size(square);
 	i = 0;
 	if (n - y < elem[7] + 1)
 		return (-1);
-	while (i < 4 && (square[elem[2 * i + 1]
-		+ y][elem[2 * i] + x]) != '\n')
+	while (i < 4 && (square[elem[2 * i + 1] + y][elem[2 * i] + x]) != '\n')
 	{
-		if ((square[elem[2 * i + 1] +
-			y][elem[2 * i] + x]) != '.')
+		if ((square[elem[2 * i + 1] + y][elem[2 * i] + x]) != '.')
 			return (0);
 		i++;
 	}
@@ -63,7 +58,7 @@ void	new_square(char ***square, int n)
 		free((*square)[i]);
 		i++;
 	}
-	*square = NULL;
+	free(*square);
 	*square = create_square(n);
 }
 
@@ -82,8 +77,8 @@ int size(char **square)
 int	req_function(char ***square, t_tetra **tmp,int x, int y, t_tetra **head)
 {
 	int	check;
-	check = check_clash(*square, tmp, x, y, size(*square));
-
+	
+	check = check_clash(*square, tmp, x, y);
 	if (check == 1)
 	{
 		push_figure(square, (int *)(*tmp)->data, (*tmp)->c, x, y);
@@ -109,18 +104,14 @@ int	req_function(char ***square, t_tetra **tmp,int x, int y, t_tetra **head)
 		return (newguy(square, tmp,  x, y, head));
 	return (1);
 }
+
 int newguy(char ***square, t_tetra **tmp,int x, int y, t_tetra **head)
 {
 	int a;
 	int n;
 	
 	n = size(*square);
-
 	a = koord_changer(&x, &y, n);
-	// ft_putnbr(x);
-	// ft_putnbr(y);
-	// ft_putnbr(n);
-	// write(1,"dr",2);
 	if  (a == 1)
 	{
 		return (req_function(square, tmp, x, y , head));
@@ -165,7 +156,7 @@ int		find_min_square(char ***square, t_tetra **elem)
 	tmp = elem;
 	if (*tmp)
 	{
-		req_function(square, tmp ,x, y, elem);
+		req_function(square, tmp, x, y, elem);
 	}
-	return (1);
+	return (size(*square));
 }

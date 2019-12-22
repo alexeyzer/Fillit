@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetra_func.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:46:44 by aguiller          #+#    #+#             */
-/*   Updated: 2019/12/14 17:31:36 by ehell            ###   ########.fr       */
+/*   Updated: 2019/12/22 16:45:10 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,15 @@ t_tetra		*tetra_add_content(t_tetra *new_list, void const *content,
 		ft_memcpy(new_list->data, content, content_size);
 	}
 	return (new_list);
+}
+void	tetradel(t_tetra **alst)
+{
+	if ((*alst)->next != NULL)
+	{
+		tetradel(&((*alst)->next));
+		free((*alst)->next);
+	}
+	free(((**alst).data));
+	(*alst)->next = NULL;
+	
 }

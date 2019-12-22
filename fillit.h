@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 08:19:05 by alexzudin         #+#    #+#             */
-/*   Updated: 2019/12/21 23:27:49 by alexzudin        ###   ########.fr       */
+/*   Updated: 2019/12/22 16:58:50 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ struct						s_koord
 t_tetra						*tetra_add(t_tetra *alst, t_tetra *new);
 t_tetra						*tetra_new(void const *content,
 	char a, size_t content_size);
+void						tetradel(t_tetra **alst);
 void						tomass(int fd, int **mass);
 int							read_to_mass(int fd, int count, t_tetra **head);
 int							make_minimal(t_tetra **head);
@@ -49,7 +50,7 @@ char						**create_square(int n);
 void						print_square(int n, char **square);
 int							find_min(t_tetra *elem);
 void						solver(t_tetra **elem);
-int		check_clash(char **square, t_tetra **tmp, int x, int y, int n);
+int		check_clash(char **square, t_tetra **tmp, int x, int y);
 void	push_figure(char ***square, const int *elem, char c, int x, int y);
 void	new_square(char ***square, int n);
 int	req_function(char ***square, t_tetra **tmp,int x, int y, t_tetra **head);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   second_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:54 by alexzudin         #+#    #+#             */
-/*   Updated: 2019/12/14 17:50:51 by ehell            ###   ########.fr       */
+/*   Updated: 2019/12/22 16:58:47 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	tomass(int fd, int **mass)
 			j++;
 		}
 		i++;
+		if (s)
+		ft_strdel(&s);
 	}
 	get_next_line(fd, &s);
 	if (s)
@@ -125,5 +127,8 @@ int		second_check(int fd, int count)
 	if (diagonal_check(&head) == 0)
 		return (0);
 	solver(&head);
+	tetradel(&head);
+	free(head);
+	head = NULL;
 	return (1);
 }

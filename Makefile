@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alexzudin <alexzudin@student.42.fr>        +#+  +:+       +#+         #
+#    By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 22:26:44 by aguiller          #+#    #+#              #
-#    Updated: 2019/12/21 23:01:53 by alexzudin        ###   ########.fr        #
+#    Updated: 2019/12/22 15:18:10 by aguiller         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,10 +95,10 @@ fcleanlib: cleanlib
 relib: fcleanlib $(NAME_LIB)
 
 $(NAME): $(NAME_LIB) $(OBJ) 
-	@gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) libft.a
+	@gcc -g -Wall -Wextra -Werror -o $(NAME) $(OBJ) libft.a
 
 %.o:%.c
-	@gcc -Wall -Wextra -Werror -c $< -o $@
+	@gcc -g -Wall -Wextra -Werror -c $< -o $@
 
 clean: cleanlib
 	@/bin/rm -f $(OBJ)
