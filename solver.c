@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 17:40:53 by ehell             #+#    #+#             */
-/*   Updated: 2019/12/22 16:58:49 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/23 12:53:47 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,22 @@ int		find_min(t_tetra *elem)
 	while (i * i < min)
 		i++;
 	return (i);
+}
+
+int		make_minimal(t_tetra **head)
+{
+	int		*mass;
+	t_tetra	*now;
+
+	now = *head;
+	while (now != NULL)
+	{
+		mass = (int*)now->data;
+		find_minimal(&mass);
+		now = now->next;
+		mass = NULL;
+	}
+	return (1);
 }
 
 void	solver(t_tetra **elem)

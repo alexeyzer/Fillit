@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 20:55:56 by alexzudin         #+#    #+#             */
-/*   Updated: 2019/12/22 16:06:33 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/23 13:39:28 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	lastcheck(int i, char **line)
 	return (1);
 }
 
-int	absolutlylastcheck(int strok, int reshotki, int *count, char ** line)
+int	absolutlylastcheck(int strok, int reshotki, int *count, char **line)
 {
 	ft_strdel(line);
 	if (strok != 4)
@@ -53,7 +53,7 @@ int	absolutlylastcheck(int strok, int reshotki, int *count, char ** line)
 	return (1);
 }
 
-int fresher(char **line)
+int	fresher(char **line)
 {
 	ft_strdel(line);
 	return (0);

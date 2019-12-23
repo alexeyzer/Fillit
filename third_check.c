@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 12:08:13 by aguiller          #+#    #+#             */
-/*   Updated: 2019/12/22 16:42:14 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/23 12:56:31 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,15 @@ int		cleanmass(int ***massive)
 	return (1);
 }
 
-int		diagonal_check(t_tetra **head)
+int		diagonal_check(t_tetra *now)
 {
 	int		*mass;
 	int		i;
 	int		counter;
 	int		**massive;
-	t_tetra	*now;
 
 	massive = (int**)malloc(sizeof(int*) * 19);
 	this_ismistke(&massive);
-	now = *head;
 	while (now != NULL)
 	{
 		i = 0;
