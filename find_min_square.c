@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 18:49:41 by ehell             #+#    #+#             */
-/*   Updated: 2019/12/23 13:38:07 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/26 22:00:18 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ int		check_clash(char **square, t_tetra **tmp, int x, int y)
 	elem = (int*)((*tmp)->data);
 	n = size(square);
 	i = 0;
-	if (n - y < elem[7] + 1)
-		return (-1);
+	while (i < 4)
+	{
+		if (x + elem[2 * i] >= n || y + elem[2 * i + 1] >= n)
+			return (0);
+		i++;
+	}
+	i = 0;
 	while (i < 4 && (square[elem[2 * i + 1] + y][elem[2 * i] + x]) != '\n')
 	{
 		if ((square[elem[2 * i + 1] + y][elem[2 * i] + x]) != '.')

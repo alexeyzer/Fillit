@@ -6,11 +6,13 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 17:40:53 by ehell             #+#    #+#             */
-/*   Updated: 2019/12/23 12:53:47 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/26 21:53:50 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+#include <stdio.h>
 
 char	**create_square(int n)
 {
@@ -19,7 +21,7 @@ char	**create_square(int n)
 	int		j;
 
 	i = 0;
-	squar = (char**)malloc(sizeof(char **) * (n + 1));
+	squar = (char**)malloc(sizeof(char**) * (n + 1));
 	while (i < n)
 	{
 		squar[i] = (char*)malloc(sizeof(char*) * (n + 1));
@@ -37,7 +39,7 @@ char	**create_square(int n)
 		squar[i][j] = '\n';
 		i++;
 	}
-	squar[n] = NULL;
+	squar[i] = NULL;
 	return (squar);
 }
 

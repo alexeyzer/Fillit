@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 13:30:40 by aguiller          #+#    #+#             */
-/*   Updated: 2019/12/23 13:39:47 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/26 21:53:51 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int			size(char **square)
 	int i;
 
 	i = 0;
-	while (square[0][i])
+	while (square[0][i] != '\n')
 	{
 		i++;
 	}
-	return (i - 1);
+	return (i);
 }
 
 void		push_figure(char ***square, t_tetra **tmp, int x, int y)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   second_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:17:54 by alexzudin         #+#    #+#             */
-/*   Updated: 2019/12/23 13:59:27 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/26 18:44:39 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,14 @@ int		second_check(int fd, int count)
 	if (read_to_mass(fd, count, &head) == 0)
 		return (0);
 	close(fd);
-	if (make_minimal(&head) == 0)
-		return (0);
+	make_minimal(&head);
 	now = head;
 	if (diagonal_check(now) == 0)
+	{
+		tetradel(&head);
+		free(head);
 		return (0);
+	}
 	solver(&head);
 	tetradel(&head);
 	free(head);

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   third_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 12:08:13 by aguiller          #+#    #+#             */
-/*   Updated: 2019/12/23 12:56:31 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/26 18:44:58 by ehell            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "stdio.h"
 
 void	this_ismistke(int ***massive)
 {
