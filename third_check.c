@@ -3,60 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   third_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehell <ehell@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 12:08:13 by aguiller          #+#    #+#             */
-/*   Updated: 2019/12/26 18:44:58 by ehell            ###   ########.fr       */
+/*   Updated: 2020/01/22 20:29:10 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	this_ismistke(int ***massive)
+int		checkdig(int *m, int c)
 {
-	(*massive)[0] = I_PIECE;
-	(*massive)[1] = IH_PIECE;
-	(*massive)[2] = O_PIECE;
-	(*massive)[3] = L_PIECE;
-	(*massive)[4] = LR_PIECE;
-	(*massive)[5] = LD_PIECE;
-	(*massive)[6] = LL_PIECE;
-	(*massive)[7] = J_PIECE;
-	(*massive)[8] = JR_PIECE;
-	(*massive)[9] = JD_PIECE;
-	(*massive)[10] = JL_PIECE;
-	(*massive)[11] = T_PIECE;
-	(*massive)[12] = TR_PIECE;
-	(*massive)[13] = TD_PIECE;
-	(*massive)[14] = TL_PIECE;
-	(*massive)[15] = S_PIECE;
-	(*massive)[16] = SR_PIECE;
-	(*massive)[17] = Z_PIECE;
-	(*massive)[18] = ZR_PIECE;
-}
+	int j;
+	int good;
 
-int		intequ(int *s1, int *s2)
-{
-	int i;
-
-	i = 0;
-	while (i < 8)
+	c = 0;
+	good = 0;
+	while (c < 7)
 	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
+		j = 0;
+		while (j < 4)
+		{
+			if (((((m[c] + 1) == m[j * 2]) && (m[c + 1] == m[2 * j + 1]))
+			|| (((m[c]) == m[j * 2]) && ((m[c + 1] + 1) == m[2 * j + 1])))
+			&& ((c != 2 * j)))
+				good++;
+			if (((((m[c] - 1) == m[j * 2]) && (m[c + 1] == m[2 * j + 1]))
+			|| (((m[c]) == m[j * 2]) && ((m[c + 1] - 1) == m[2 * j + 1])))
+			&& ((c != 2 * j)))
+				good++;
+			j++;
+		}
+		c = c + 2;
 	}
-	return (1);
-}
-
-int		cleanmass(int ***massive)
-{
-	int i;
-
-	i = 0;
-	free(*massive);
-	massive = NULL;
-	return (1);
+	return (good);
 }
 
 int		diagonal_check(t_tetra *now)
@@ -64,25 +44,15 @@ int		diagonal_check(t_tetra *now)
 	int		*mass;
 	int		i;
 	int		counter;
-	int		**massive;
 
-	massive = (int**)malloc(sizeof(int*) * 19);
-	this_ismistke(&massive);
 	while (now != NULL)
 	{
 		i = 0;
 		counter = 0;
 		mass = (int*)now->data;
-		while (i < 19)
-		{
-			if (intequ(mass, massive[i]) == 1)
-				counter++;
-			i++;
-		}
-		if (counter == 0)
+		if (checkdig(mass, 0) < 6)
 			return (0);
 		now = now->next;
 	}
-	cleanmass(&massive);
 	return (1);
 }

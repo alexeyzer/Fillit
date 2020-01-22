@@ -6,13 +6,11 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 17:40:53 by ehell             #+#    #+#             */
-/*   Updated: 2019/12/26 21:53:50 by aguiller         ###   ########.fr       */
+/*   Updated: 2019/12/29 16:25:06 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-#include <stdio.h>
 
 char	**create_square(int n)
 {

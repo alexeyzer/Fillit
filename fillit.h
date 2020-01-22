@@ -6,7 +6,7 @@
 /*   By: aguiller <aguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 08:19:05 by alexzudin         #+#    #+#             */
-/*   Updated: 2019/12/23 13:55:09 by aguiller         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:23:22 by aguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <sys/uio.h>
 # include <fcntl.h>
 # include "libft/libft.h"
-# define BUFF_SIZE 8
 
 int							get_next_line(const int fd, char **line);
 int							first_check(int fd, int *c);
@@ -39,6 +38,7 @@ struct						s_koord
 	int						y;
 	int						nbr;
 };
+
 t_tetra						*tetra_add(t_tetra *alst, t_tetra *new);
 t_tetra						*tetra_new(void const *content, char a,
 	size_t content_size, t_tetra *prev);
@@ -67,24 +67,6 @@ int							newguy(char ***square, t_tetra **tmp, int x, int y);
 int							make_minimal(t_tetra **head);
 void						free_letter(char ***square, char c, int n);
 int							koord_changer(int *x, int *y, int n);
-# define I_PIECE (int [8]){0,0,0,1,0,2,0,3}
-# define IH_PIECE (int [8]){0,0,1,0,2,0,3,0}
-# define O_PIECE (int [8]){0,0,1,0,0,1,1,1}
-# define L_PIECE (int [8]){0,0,0,1,0,2,1,2}
-# define LR_PIECE (int [8]){0,0,1,0,2,0,0,1}
-# define LD_PIECE (int [8]){0,0,1,0,1,1,1,2}
-# define LL_PIECE (int [8]){2,0,0,1,1,1,2,1}
-# define J_PIECE (int [8]){1,0,1,1,0,2,1,2}
-# define JR_PIECE (int [8]){0,0,0,1,1,1,2,1}
-# define JD_PIECE (int [8]){0,0,1,0,0,1,0,2}
-# define JL_PIECE (int [8]){0,0,1,0,2,0,2,1}
-# define T_PIECE (int [8]){1,0,0,1,1,1,2,1}
-# define TR_PIECE (int [8]){0,0,0,1,1,1,0,2}
-# define TD_PIECE (int [8]){0,0,1,0,2,0,1,1}
-# define TL_PIECE (int [8]){1,0,0,1,1,1,1,2}
-# define S_PIECE (int [8]){1,0,2,0,0,1,1,1}
-# define SR_PIECE (int [8]){0,0,0,1,1,1,1,2}
-# define Z_PIECE (int [8]){0,0,1,0,1,1,2,1}
-# define ZR_PIECE (int [8]){1,0,0,1,1,1,0,2}
 
+# define BUFF_SIZE 8
 #endif
